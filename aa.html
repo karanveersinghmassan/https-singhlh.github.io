@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Algorithms</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Optional: Custom CSS for specific elements or overrides */
+        .container {
+            max-width: 1200px; /* Increased max-width for larger screens */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .heading-link {
+            color: #6b7280; /* Gray color for the link */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.2s ease; /* Smooth color transition */
+        }
+        .heading-link:hover {
+            color: #374151; /* Darker gray on hover */
+        }
+        .content-section {
+            margin-bottom: 24px; /* Increased margin for better spacing */
+        }
+        .topic-title {
+            margin-top: 20px; /* Increased margin for better spacing */
+            margin-bottom: 12px;
+            font-size: 2.25rem; /* further increased heading size */
+            font-weight: 700; /* make heading bold */
+            color: #2d3748; /* Darker heading color */
+            letter-spacing: -0.025em; /* slightly reduce letter spacing for better look */
+        }
+        .algorithm-box {
+            background-color: #f7fafc; /* Lighter background for algorithm boxes */
+            border: 1px solid #e5e7eb; /* тонкая граница */
+            padding: 24px; /* Increased padding */
+            margin-bottom: 24px; /* Increased margin */
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* more pronounced shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for hover effect */
+        }
+        .algorithm-box:hover {
+            transform: translateY(-4px); /* Slight upward movement on hover */
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -3px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+        }
+        .algorithm-box h3 {
+            margin-top: 0;
+            margin-bottom: 16px; /* Increased margin */
+            font-size: 1.75rem; /* Slightly larger font */
+            font-weight: 600; /* Make heading bold */
+            color: #2d3748;
+            letter-spacing: -0.02em;
+        }
+        .algorithm-box p {
+            line-height: 1.75; /* Increased line height for better readability */
+            color: #4a5568; /* Slightly darker text */
+        }
+        .example-box {
+            background-color: #edf2f7; /* Lighter background for examples */
+            border: 1px solid #e0e6ed;
+            padding: 24px; /* Increased padding */
+            margin-bottom: 24px; /* Increased margin */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .example-box h4 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1.5rem; /* Slightly larger font */
+            font-weight: 600;
+            color: #4a5568;
+            letter-spacing: -0.02em;
+        }
+        .example-box p{
+             line-height: 1.75; /* Increased line height for better readability */
+             color: #4a5568;
+        }
+
+        .table-of-contents {
+            background-color: #f7fafc;
+            border: 1px solid #e5e7eb;
+            padding: 24px;
+            margin-bottom: 32px; /* Increased margin */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-of-contents h2 {
+            margin-top: 0;
+            margin-bottom: 20px; /* Increased margin */
+            font-size: 2.5rem; /* Increased font size */
+            font-weight: 700; /* Make heading bold */
+            color: #2d3748;
+            letter-spacing: -0.025em;
+        }
+
+        .table-of-contents ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 12px; /* Increased margin */
+        }
+
+        .table-of-contents a {
+            color: #4a5568;
+            text-decoration: none;
+            transition: color 0.2s ease, font-weight 0.2s ease; /* Smooth transition for color and font-weight */
+            font-weight: 500; /* Medium font weight for links */
+        }
+
+        .table-of-contents a:hover {
+            color: #2d3748; /* Darker color on hover */
+            font-weight: 600; /* Make link bold on hover */
+        }
+        /* Add smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+        /* Added styling for code snippets */
+        pre {
+            background-color: #edf2f7;
+            border: 1px solid #e0e6ed;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* Enable horizontal scrolling for long code snippets */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* Use a monospace font */
+            font-size: 0.875rem; /* Reduced font size for code */
+            line-height: 1.5rem;
+        }
+        code {
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+          font-size: 0.875rem;
+          color: #2d3748;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50"> <div class="container">
+        <header class="py-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 tracking-tight">Advanced Algorithms</h1> </header>
+
+        <nav class="table-of-contents">
+            <h2 class="text-3xl font-semibold mb-6">Table of Contents</h2> <ul>
+                <li><a href="#unit1">Unit 1: Sorting and Graph Algorithms</a></li>
+                <li><a href="#unit2">Unit 2: Matroids and Graph Matching</a></li>
+                <li><a href="#unit3">Unit 3: Flow Networks and Matrix Computations</a></li>
+                <li><a href="#unit4">Unit 4: Shortest Paths, Modulo Representation, and DFT</a></li>
+                <li><a href="#unit5">Unit 5: Linear Programming and NP-Completeness</a></li>
+                <li><a href="#unit6">Unit 6: Recent Trends</a></li>
+            </ul>
+        </nav>
+
+        <section id="unit1" class="content-section">
+            <h2 class="topic-title">Unit 1: Sorting and Graph Algorithms</h2>
+            <p class="text-lg text-gray-600"> This unit covers fundamental sorting algorithms and graph theory concepts,
+                laying the groundwork for more advanced topics.
+            </p>
+
+            <div class="algorithm-box">
+                <h3>Sorting Algorithms</h3>
+                <p class="mb-4 text-gray-700"> Review of various sorting algorithms like Merge Sort, Quick Sort, and Heap Sort.
+                    Emphasis on their time and space complexity analysis.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Merge Sort</h4> <p class="mb-4 text-gray-600">
+                        Merge Sort is a divide-and-conquer algorithm with a time complexity of O(n log n).
+                        It works by recursively dividing the array into smaller sub-arrays,
+                        sorting them, and then merging them back together.
+                    </p>
+                     <p class="mb-4 text-gray-600">Here's a step-by-step example of Merge Sort:</p>
+                        <ol class="list-decimal list-inside mb-4 text-gray-600">
+                            <li>Divide the array: [8, 3, 2, 9, 7, 1, 5, 4]  ->  [8, 3, 2, 9] and [7, 1, 5, 4]</li>
+                            <li>Recursively sort sub-arrays: [8, 3, 2, 9] -> [2, 3, 8, 9] and [7, 1, 5, 4] -> [1, 4, 5, 7]</li>
+                            <li>Merge the sorted sub-arrays: [2, 3, 8, 9] and [1, 4, 5, 7] -> [1, 2, 3, 4, 5, 7, 8, 9]</li>
+                        </ol>
+                    <pre><code>
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const mid = Math.floor(arr.length / 2);
+  const left = arr.slice(0, mid);
+  const right = arr.slice(mid);
+  const sortedLeft = mergeSort(left);
+  const sortedRight = mergeSort(right);
+  return merge(sortedLeft, sortedRight);
+}
+
+function merge(left, right) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Topological Sorting</h3>
+                <p class="mb-4 text-gray-700">
+                    Topological sorting for Directed Acyclic Graphs (DAGs).  Algorithm and its applications.
+                </p>
+                 <div class="example-box">
+                    <h4 class="mb-3">Example: Topological Sort</h4>
+                    <p class="mb-4 text-gray-600">
+                        Consider a DAG representing course prerequisites.  Topological sort gives an order in which courses can be taken.
+                    </p>
+                     <p class="mb-4 text-gray-600">
+                        For example, if course A is a prerequisite for B, and B for C, a valid topological order is A -> B -> C.
+                     </p>
+                     <pre><code>
+function topologicalSort(graph) {
+  const visited = new Set();
+  const stack = [];
+  for (const node in graph) {
+    if (!visited.has(node)) {
+      dfs(node, visited, stack, graph);
+    }
+  }
+  return stack.reverse();
+}
+
+function dfs(node, visited, stack, graph) {
+  visited.add(node);
+  if (graph[node]) {
+    for (const neighbor of graph[node]) {
+      if (!visited.has(neighbor)) {
+        dfs(neighbor, visited, stack, graph);
+      }
+    }
+  }
+  stack.push(node);
+}
+
+// Example usage:
+const graph = {
+  'A': ['B'],
+  'B': ['C', 'D'],
+  'C': ['E'],
+  'D': ['E'],
+  'E': []
+};
+const result = topologicalSort(graph); // Output: ['A', 'B', 'D', 'C', 'E']
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Graph Algorithms</h3>
+                <p class="mb-4 text-gray-700">
+                    Definitions and Elementary Algorithms: Shortest path by BFS, shortest
+                    path in edge-weighted case (Dijkstra's), depth-first search and computation of
+                    strongly connected components. Emphasis on correctness proof of the algorithm
+                    and time/space analysis, example of amortized analysis.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Dijkstra's Algorithm</h4>
+                    <p class="mb-4 text-gray-600">
+                        Dijkstra's algorithm finds the shortest path from a source node to all other nodes in a graph with non-negative edge weights.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        Consider a graph of cities connected by roads with distances as edge weights. Dijkstra's algorithm can find the shortest route from one city to all others.
+                     </p>
+                     <pre><code>
+function dijkstra(graph, start) {
+  const distances = {};
+  for (const node in graph) {
+    distances[node] = Infinity;
+  }
+  distances[start] = 0;
+  const visited = new Set();
+  const queue = new MinPriorityQueue(); // Hypothetical priority queue
+  queue.enqueue(start, 0);
+
+  while (!queue.isEmpty()) {
+    const { element: node, priority: currentDistance } = queue.dequeue();
+    if (visited.has(node)) {
+      continue;
+    }
+    visited.add(node);
+    if (graph[node]) {
+      for (const neighbor in graph[node]) {
+        const weight = graph[node][neighbor];
+        const distance = currentDistance + weight;
+        if (distance < distances[neighbor]) {
+          distances[neighbor] = distance;
+          queue.enqueue(neighbor, distance);
+        }
+      }
+    }
+  }
+  return distances;
+}
+
+// Example usage:
+const graph = {
+  'A': {'B': 5, 'C': 1},
+  'B': {'D': 2},
+  'C': {'B': 2, 'D': 4, 'E': 8},
+  'D': {'E': 3},
+  'E': {}
+};
+const result = dijkstra(graph, 'A'); // Output: { A: 0, B: 3, C: 1, D: 5, E: 8 }
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="unit2" class="content-section">
+            <h2 class="topic-title">Unit 2: Matroids and Graph Matching</h2>
+            <p class="text-lg text-gray-600">
+               This unit introduces matroids, a generalization of linear independence, and graph matching algorithms.
+            </p>
+
+            <div class="algorithm-box">
+                <h3>Matroids</h3>
+                <p class="mb-4 text-gray-700">
+                    Introduction to greedy paradigm, algorithm to compute a maximum
+                    weight maximal independent set. Application to MST.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Kruskal's Algorithm for MST</h4>
+                    <p class="mb-4 text-gray-600">
+                        Kruskal's algorithm, a greedy algorithm for finding the Minimum Spanning Tree (MST) in a graph, can be seen as an application of matroid theory.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        The edges of the graph can be considered as elements of a matroid, and the independent sets are the sets of edges that do not form a cycle.
+                    </p>
+                    <pre><code>
+function kruskalMST(edges) {
+  edges.sort((a, b) => a.weight - b.weight); // Sort edges by weight
+  const parent = {};
+  function find(i) {
+    if (parent[i] == null) return i;
+    return parent[i] = find(parent[i]);
+  }
+  function union(i, j) {
+    const rootI = find(i);
+    const rootJ = find(j);
+    if (rootI !== rootJ) {
+      parent[rootI] = rootJ;
+      return true;
+    }
+    return false;
+  }
+  const mst = [];
+  for (const edge of edges) {
+    if (union(edge.source, edge.target)) {
+      mst.push(edge);
+    }
+  }
+  return mst;
+}
+
+// Example usage:
+const edges = [
+  { source: 'A', target: 'B', weight: 1 },
+  { source: 'A', target: 'C', weight: 2 },
+  { source: 'B', target: 'D', weight: 3 },
+  { source: 'C', target: 'D', weight: 4 },
+  { source: 'D', target: 'E', weight: 5 },
+];
+const mst = kruskalMST(edges);
+// mst will contain the edges of the minimum spanning tree
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Graph Matching</h3>
+                <p class="mb-4 text-gray-700">
+                    Algorithm to compute maximum matching. Characterization of
+                    maximum matching by augmenting paths, Edmond's Blossom algorithm to
+                    compute augmenting path.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Maximum Matching</h4>
+                    <p class="mb-4 text-gray-600">
+                       Consider a scenario where you have a set of workers and a set of jobs.  An edge between a worker and a job indicates the worker can do that job.  Maximum matching aims to maximize the number of worker-job pairs.
+                    </p>
+                    <pre><code>
+// This is a simplified example and doesn't implement Edmond's Blossom
+function maxMatching(graph) {
+  const matching = {};
+  function findAugmentingPath(start, path = []) {
+    if (path.includes(start)) return null;
+    path.push(start);
+    if (graph[start]) {
+      for (const neighbor of graph[start]) {
+        if (!matching[neighbor] || findAugmentingPath(matching[neighbor], [...path])) {
+          matching[start] = neighbor;
+          matching[neighbor] = start;
+          return true;
+        }
+      }
+    }
+    return null;
+  }
+  let maxMatches = 0;
+  for (const node in graph) {
+    if (!matching[node] && findAugmentingPath(node)) {
+      maxMatches++;
+    }
+  }
+  return matching;
+}
+
+// Example
+const graph = {
+  'A': ['X', 'Y'],
+  'B': ['Y', 'Z'],
+  'C': ['Z']
+};
+const result = maxMatching(graph); //  {'A': 'X', 'X': 'A', 'B': 'Y', 'Y': 'B', 'C': 'Z', 'Z': 'C' }
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="unit3" class="content-section">
+            <h2 class="topic-title">Unit 3: Flow Networks and Matrix Computations</h2>
+            <p class="text-lg text-gray-600">
+                This unit covers network flow problems and efficient algorithms for matrix computations.
+            </p>
+
+            <div class="algorithm-box">
+                <h3>Flow Networks</h3>
+                <p class="mb-4 text-gray-700">
+                    Maxflow-mincut theorem, Ford-Fulkerson Method to compute
+                    maximum flow, Edmond-Karp maximum-flow algorithm.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Ford-Fulkerson</h4>
+                    <p class="mb-4 text-gray-600">
+                        Consider a network of pipes with capacities.  The Ford-Fulkerson method finds the maximum amount of fluid that can flow from source to sink.
+                     </p>
+                     <p class="mb-4 text-gray-600">
+                        The Max-Flow Min-Cut theorem states that the maximum flow is equal to the capacity of the minimum cut in the network.
+                     </p>
+                     <pre><code>
+function fordFulkerson(graph, source, sink) {
+  let maxFlow = 0;
+  const residualGraph = deepCopy(graph); // Create a copy to track residual capacities
+
+  while (true) {
+    const path = findPath(residualGraph, source, sink, new Set()); // Find a path using DFS
+    if (!path) break; // No path found, we're done
+
+    let minCapacity = Infinity;
+    for (let i = 0; i < path.length - 1; i++) {
+      const u = path[i];
+      const v = path[i + 1];
+      minCapacity = Math.min(minCapacity, residualGraph[u][v]);
+    }
+
+    for (let i = 0; i < path.length - 1; i++) {
+      const u = path[i];
+      const v = path[i + 1];
+      residualGraph[u][v] -= minCapacity; // Reduce forward edge capacity
+      residualGraph[v][u] += minCapacity; // Increase backward edge capacity
+    }
+    maxFlow += minCapacity;
+  }
+  return maxFlow;
+}
+
+function findPath(graph, u, sink, visited) {
+  if (u === sink) return [u];
+  visited.add(u);
+  if (graph[u]) {
+    for (const v in graph[u]) {
+      if (!visited.has(v) && graph[u][v] > 0) {
+        const path = findPath(graph, v, sink, visited);
+        if (path) return [u, ...path];
+      }
+    }
+  }
+  return null;
+}
+
+function deepCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+// Example
+const graph = {
+  'A': {'B': 10, 'C': 10},
+  'B': {'C': 2, 'D': 8},
+  'C': {'D': 7, 'E': 5},
+  'D': {'E': 10},
+  'E': {}
+};
+const maxFlow = fordFulkerson(graph, 'A', 'E'); // 19
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Matrix Computations</h3>
+                <p class="mb-4 text-gray-700">
+                    Strassen's algorithm and introduction to divide and
+                    conquer paradigm, inverse of a triangular matrix, relation between the time
+                    complexities of basic matrix operations, LUP-decomposition.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Strassen's Algorithm</h4>
+                    <p class="mb-4 text-gray-600">
+                        Strassen's algorithm is a divide-and-conquer algorithm for matrix multiplication that is faster than the standard O(n^3) algorithm for large matrices.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        It reduces the number of multiplications from 8 to 7 in each recursive step, resulting in a time complexity of O(n^log2(7)).
+                    </p>
+                    <pre><code>
+function strassen(A, B) {
+  const n = A.length;
+  if (n === 1) {
+    return [[A[0][0] * B[0][0]]];
+  }
+  const mid = Math.floor(n / 2);
+  const A11 = A.slice(0, mid).map(row => row.slice(0, mid));
+  const A12 = A.slice(0, mid).map(row => row.slice(mid));
+  const A21 = A.slice(mid).map(row => row.slice(0, mid));
+  const A22 = A.slice(mid).map(row => row.slice(mid));
+  const B11 = B.slice(0, mid).map(row => row.slice(0, mid));
+  const B12 = B.slice(0, mid).map(row => row.slice(mid));
+  const B21 = B.slice(mid).map(row => row.slice(0, mid));
+  const B22 = B.slice(mid).map(row => row.slice(mid));
+
+  const P1 = strassen(add(A11, A22), add(B11, B22));
+  const P2 = strassen(add(A21, A22), B11);
+  const P3 = strassen(A11, sub(B12, B22));
+  const P4 = strassen(A22, sub(B21, B11));
+  const P5 = strassen(add(A11, A12), B22);
+  const P6 = strassen(sub(A21, A11), add(B11, B12));
+  const P7 = strassen(sub(A12, A22), add(B21, B22));
+
+  const C11 = add(sub(add(P1, P4), P5), P7);
+  const C12 = add(P3, P5);
+  const C21 = add(P2, P4);
+  const C22 = add(sub(add(P1, P3), P2), P6);
+
+  const C = [];
+  for (let i = 0; i < mid; i++) {
+    C[i] = C11[i].concat(C12[i]);
+  }
+  for (let i = 0; i < mid; i++) {
+    C[i + mid] = C21[i].concat(C22[i]);
+  }
+  return C;
+}
+
+function add(A, B) {
+  const n = A.length;
+  const C = [];
+  for (let i = 0; i < n; i++) {
+    C[i] = [];
+    for (let j = 0; j < n; j++) {
+      C[i][j] = A[i][j] + B[i][j];
+    }
+  }
+  return C;
+}
+
+function sub(A, B) {
+  const n = A.length;
+  const C = [];
+  for (let i = 0; i < n; i++) {
+    C[i] = [];
+    for (let j = 0; j < n; j++) {
+      C[i][j] = A[i][j] - B[i][j];
+    }
+  }
+  return C;
+}
+
+// Example
+const A = [[1, 2], [3, 4]];
+const B = [[5, 6], [7, 8]];
+const result = strassen(A, B); // [[19, 22], [43, 50]]
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="unit4" class="content-section">
+            <h2 class="topic-title">Unit 4: Shortest Paths, Modulo Representation, and DFT</h2>
+            <p class="text-lg text-gray-600">
+               This unit delves into more graph algorithms, number theory applications, and signal processing.
+            </p>
+
+            <div class="algorithm-box">
+                <h3>Shortest Path in Graphs</h3>
+                <p class="mb-4 text-gray-700">
+                    Floyd-Warshall algorithm and introduction to dynamic
+                    programming paradigm. More examples of dynamic programming.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Floyd-Warshall</h4>
+                    <p class="mb-4 text-gray-600">
+                        The Floyd-Warshall algorithm finds the shortest paths between all pairs of vertices in a graph.  It uses dynamic programming.
+                     </p>
+                     <p class="mb-4 text-gray-600">
+                         Consider a map where you want to find the shortest distance between every pair of cities. Floyd-Warshall helps achieve this.
+                     </p>
+                     <pre><code>
+function floydWarshall(graph) {
+  const n = graph.length;
+  const dist = graph.map(row => [...row]); // Initialize distance matrix
+  // Iterate through all intermediate vertices k
+  for (let k = 0; k < n; k++) {
+    // Iterate through all source vertices i
+    for (let i = 0; i < n; i++) {
+      // Iterate through all destination vertices j
+      for (let j = 0; j < n; j++) {
+        if (dist[i][k] !== Infinity && dist[k][j] !== Infinity) {
+          dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
+        }
+      }
+    }
+  }
+  return dist;
+}
+
+// Example
+const graph = [
+  [0, 5, Infinity, 10],
+  [Infinity, 0, 3, Infinity],
+  [Infinity, Infinity, 0, 1],
+  [Infinity, Infinity, Infinity, 0]
+];
+const result = floydWarshall(graph);
+// result:
+// [
+//   [0, 5, 8, 9],
+//   [Infinity, 0, 3, 4],
+//   [Infinity, Infinity, 0, 1],
+//   [Infinity, Infinity, Infinity, 0]
+// ]
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Modulo Representation of integers/polynomials</h3>
+                <p class="mb-4 text-gray-700">
+                    Chinese Remainder Theorem,
+                    Conversion between base-representation and modulo-representation. Extension to
+                    polynomials. Application: Interpolation problem.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Chinese Remainder Theorem</h4>
+                    <p class="mb-4 text-gray-600">
+                        The Chinese Remainder Theorem allows us to reconstruct a number from its remainders modulo several pairwise coprime moduli.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        For instance, if we know a number leaves remainders of 2, 3, and 2 when divided by 3, 5, and 7 respectively, we can find the number.
+                    </p>
+                    <pre><code>
+function chineseRemainderTheorem(remainders, moduli) {
+  const N = moduli.reduce((acc, m) => acc * m, 1);
+  let result = 0;
+  for (let i = 0; i < moduli.length; i++) {
+    const n = moduli[i];
+    const N_i = N / n;
+    const x_i = modInverse(N_i, n); // Implement modular inverse function
+    result += remainders[i] * N_i * x_i;
+  }
+  return result % N;
+}
+
+function modInverse(a, m) {
+  // Extended Euclidean Algorithm to find modular inverse
+  let [m0, x0, x1] = [m, 0, 1];
+  while (a > 1) {
+    const q = Math.floor(a / m);
+    [m, a] = [a % m, m];
+    [x0, x1] = [x1 - q * x0, x0];
+  }
+  return x1 < 0 ? x1 + m0 : x1;
+}
+
+// Example
+const remainders = [2, 3, 2];
+const moduli = [3, 5, 7];
+const result = chineseRemainderTheorem(remainders, moduli); // 23
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Discrete Fourier Transform (DFT)</h3>
+                <p class="mb-4 text-gray-700">
+                    In complex field, DFT in modulo ring. Fast
+                    Fourier Transform algorithm. Schonhage-Strassen Integer Multiplication algorithm
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: FFT</h4>
+                    <p class="mb-4 text-gray-600">
+                        The Fast Fourier Transform (FFT) is an efficient algorithm to compute the Discrete Fourier Transform (DFT).  It's used in signal processing, image processing, and more.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                       For example, it can decompose a sound wave into its constituent frequencies.
+                    </p>
+                    <pre><code>
+function fft(x) {
+  const n = x.length;
+  if (n <= 1) return x;
+  const even = [];
+  const odd = [];
+  for (let i = 0; i < n; i++) {
+    if (i % 2 === 0) even.push(x[i]);
+    else odd.push(x[i]);
+  }
+  const q = fft(even);
+  const r = fft(odd);
+  const y = [];
+  for (let k = 0; k < n / 2; k++) {
+    const w = complexExp(-2 * Math.PI * k / n); // Implement complex exponential
+    y[k] = q[k] + w * r[k];
+    y[k + n / 2] = q[k] - w * r[k];
+  }
+  return y;
+}
+
+function complexExp(theta) {
+  return {
+    real: Math.cos(theta),
+    imag: Math.sin(theta)
+  };
+}
+
+function multiplyComplex(a, b) {
+  return {
+    real: a.real * b.real - a.imag * b.imag,
+    imag: a.real * b.imag + a.imag * b.real
+  };
+}
+
+function addComplex(a, b) {
+  return {
+    real: a.real + b.real,
+    imag: a.imag + b.imag
+  };
+}
+
+function subtractComplex(a, b) {
+  return {
+    real: a.real - b.real,
+    imag: a.imag - b.imag
+  };
+}
+
+// Example (simplified - assumes power of 2)
+const signal = [1, 2, 3, 4];
+const result = fft(signal);
+// result will be an array of complex numbers representing the frequency components
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="unit5" class="content-section">
+            <h2 class="topic-title">Unit 5: Linear Programming and NP-Completeness</h2>
+            <p class="text-lg text-gray-600">
+                This unit introduces optimization techniques and the theory of computational complexity.
+            </p>
+
+            <div class="algorithm-box">
+                <h3>Linear Programming</h3>
+                <p class="mb-4 text-gray-700">
+                    Geometry of the feasibility region and Simplex algorithm
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Simplex Algorithm</h4>
+                    <p class="mb-4 text-gray-600">
+                       The Simplex algorithm is a method for finding the optimal solution to a linear programming problem.
+                     </p>
+                     <p class="mb-4 text-gray-600">
+                        Imagine a company wants to maximize profit by producing two products with limited resources. Linear programming and the Simplex algorithm can determine the optimal production quantities.
+                     </p>
+                     <pre><code>
+// Simplified Simplex - assumes problem is in standard form and bounded
+function simplex(c, A, b) {
+  let table = createTableau(c, A, b); // Create initial tableau
+  while (true) {
+    const entering = findEnteringVariable(table);
+    if (entering === null) break; // No entering variable, we're optimal
+    const leaving = findLeavingVariable(table, entering);
+    if (leaving === null) throw new Error("Unbounded problem"); // No leaving variable
+    pivot(table, leaving, entering);
+  }
+  return extractSolution(table, c.length);
+}
+
+function createTableau(c, A, b) {
+  const m = A.length;
+  const n = c.length;
+  const tableau = [];
+  // Objective function row
+  tableau[0] = [...c.map(x => -x), ...Array(m).fill(0), 0];
+  // Constraint rows
+  for (let i = 0; i < m; i++) {
+    tableau[i + 1] = [...A[i], ...Array(m).fill(0)];
+    tableau[i + 1][n + i] = 1; // Add slack variable
+    tableau[i + 1][n + m] = b[i];   // b values at the end
+  }
+  return tableau;
+}
+
+function findEnteringVariable(tableau) {
+  // Find the most negative coefficient in the objective row
+  let entering = null;
+  let minVal = 0;
+  for (let j = 0; j < tableau[0].length - 1; j++) {
+    if (tableau[0][j] < minVal) {
+      minVal = tableau[0][j];
+      entering = j;
+    }
+  }
+  return entering;
+}
+
+function findLeavingVariable(tableau, entering) {
+  // Find the row with the smallest ratio of b_i / a_ij
+  let leaving = null;
+  let minRatio = Infinity;
+  for (let i = 1; i < tableau.length; i++) {
+    const a_ij = tableau[i][entering];
+    const b_i = tableau[i][tableau[0].length - 1];
+    if (a_ij > 0) {
+      const ratio = b_i / a_ij;
+      if (ratio < minRatio) {
+        minRatio = ratio;
+        leaving = i;
+      }
+    }
+  }
+  return leaving;
+}
+
+function pivot(tableau, leaving, entering) {
+  const pivotValue = tableau[leaving][entering];
+  // Divide the leaving row by the pivot value
+  for (let j = 0; j < tableau[0].length; j++) {
+    tableau[leaving][j] /= pivotValue;
+  }
+  // Subtract multiples of the leaving row from other rows to make the entering column all zeros except for the pivot
+  for (let i = 0; i < tableau.length; i++) {
+    if (i !== leaving) {
+      const factor = tableau[i][entering];
+      for (let j = 0; j < tableau[0].length; j++) {
+        tableau[i][j] -= factor * tableau[leaving][j];
+      }
+    }
+  }
+}
+
+function extractSolution(tableau, numVars) {
+  const solution = {};
+  for (let j = 0; j < numVars; j++) {
+    let basic = null;
+    let count = 0;
+    for (let i = 1; i < tableau.length; i++) {
+      if (tableau[i][j] === 1) {
+        basic = i;
+        count++;
+      } else if (tableau[i][j] !== 0) {
+        count++;
+      }
+    }
+    if (count === 1 && basic !== null) {
+      solution[`x${j + 1}`] = tableau[basic][tableau[0].length - 1];
+    } else {
+      solution[`x${j + 1}`] = 0; // Non-basic variable
+    }
+  }
+  return solution;
+}
+
+// Example (Maximize 3x1 + x2 + 2x3 subject to x1 + x2 + x3 <= 6, 2x1 + x3 <= 4, x1, x2, x3 >= 0)
+const c = [3, 1, 2];
+const A = [[1, 1, 1], [2, 0, 1]];
+const b = [6, 4];
+const result = simplex(c, A, b); // { x1: 1.3333333333333333, x2: 4.666666666666667, x3: 0 }
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>NP-completeness</h3>
+                <p class="mb-4 text-gray-700">
+                    Examples, proof of NP-hardness and NP-completeness.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: NP-Complete Problems</h4>
+                    <p class="mb-4 text-gray-600">
+                        NP-complete problems are a class of problems for which no efficient (polynomial-time) solution has been found, and if a solution exists, it can be verified quickly.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        Examples include the Traveling Salesman Problem (TSP) and the Boolean Satisfiability Problem (SAT).
+                    </p>
+                    <pre><code>
+// Simplified SAT example (Boolean Satisfiability)
+// Demonstrates checking if a given assignment satisfies a formula
+function isSatisfiable(formula, assignment) {
+  for (const clause of formula) {
+    let clauseSatisfied = false;
+    for (const literal of clause) {
+      const variable = literal[0];
+      const negated = literal[1] === '-';
+      if (assignment[variable] !== undefined) {
+        const value = assignment[variable];
+        if ((value && !negated) || (!value && negated)) {
+          clauseSatisfied = true;
+          break;
+        }
+      }
+    }
+    if (!clauseSatisfied) return false;
+  }
+  return true;
+}
+
+// Example
+const formula = [
+  ['A', '-B'],
+  ['B', 'C'],
+  ['-C', 'A']
+];
+const assignment1 = { A: true, B: false, C: true };
+const assignment2 = { A: false, B: false, C: false };
+
+console.log(isSatisfiable(formula, assignment1)); // true
+console.log(isSatisfiable(formula, assignment2)); // false
+                    </code></pre>
+                </div>
+            </div>
+
+            <div class="algorithm-box">
+                <h3>Additional Topics</h3>
+                <p class="mb-4 text-gray-700">
+                    One or more of the following topics based on time and interest:
+                    Approximation algorithms, Randomized Algorithms, Interior Point Method,
+                    Advanced Number Theoretic Algorithm
+                </p>
+                 <div class="example-box">
+                    <h4 class="mb-3">Example: Approximation Algorithms</h4>
+                    <p class="mb-4 text-gray-600">
+                        For NP-hard problems where finding an exact solution is difficult, approximation algorithms aim to find a near-optimal solution in polynomial time.
+                     </p>
+                     <p class="mb-4 text-gray-600">
+                         For example, for the Traveling Salesman Problem, a simple approximation algorithm might find a tour that is at most twice the length of the optimal tour.
+                     </p>
+                     <pre><code>
+// Simplified 2-approximation for TSP (Triangle Inequality assumed)
+function tspApprox(graph, startNode) {
+  const visited = new Set();
+  const path = [];
+  let totalCost = 0;
+
+  function visit(node) {
+    visited.add(node);
+    path.push(node);
+    let minCost = Infinity;
+    let nextNode = null;
+    for (const neighbor in graph[node]) {
+      if (!visited.has(neighbor)) {
+        const cost = graph[node][neighbor];
+        if (cost < minCost) {
+          minCost = cost;
+          nextNode = neighbor;
+        }
+      }
+    }
+    if (nextNode !== null) {
+      totalCost += minCost;
+      visit(nextNode);
+    }
+  }
+
+  visit(startNode);
+  path.push(startNode);
+  totalCost += graph[path[path.length-2]][startNode];
+  return { path, cost: totalCost };
+}
+
+// Example (graph with distances between cities)
+const graph = {
+  'A': {'B': 10, 'C': 15, 'D': 20},
+  'B': {'A': 10, 'C': 35, 'D': 25},
+  'C': {'A': 15, 'B': 35, 'D': 30},
+  'D': {'A': 20, 'B': 25, 'C': 30}
+};
+
+const result = tspApprox(graph, 'A');
+// result.path:  ['A', 'B', 'D', 'C', 'A']
+// result.cost:  80 (which is at most twice the optimal cost)
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="unit6" class="content-section">
+            <h2 class="topic-title">Unit 6: Recent Trends</h2>
+            <p class="text-lg text-gray-600">
+                This unit covers the latest advancements in algorithms and data structures.
+            </p>
+            <div class="algorithm-box">
+                <h3>Recent Trends</h3>
+                <p class="mb-4 text-gray-700">
+                    Recent Trends in problem solving paradigms using recent searching and sorting
+                    techniques by applying recently proposed data structures.
+                </p>
+                <div class="example-box">
+                    <h4 class="mb-3">Example: Recent Trends</h4>
+                    <p class="mb-4 text-gray-600">
+                        Recent trends include the use of machine learning techniques to design and analyze algorithms, the development of new data structures for specialized applications, and advancements in parallel and distributed algorithms.
+                    </p>
+                    <p class="mb-4 text-gray-600">
+                        For example, the use of Bloom filters in databases,  and advanced data structures like tries and skip lists.
+                    </p>
+                    <pre><code>
+// Simplified Bloom Filter Example
+class BloomFilter {
+  constructor(size, numHashes) {
+    this.size = size;
+    this.numHashes = numHashes;
+    this.bitArray = new Array(size).fill(false);
+  }
+
+  // Hash functions (simplified for demonstration)
+  hashFunctions(item) {
+    const hashes = [];
+    for (let i = 0; i < this.numHashes; i++) {
+      let hash = 0;
+      for (let j = 0; j < item.length; j++) {
+        hash = (hash * 31 + item.charCodeAt(j)) % this.size;
+      }
+      hash = (hash + i) % this.size; // Combine with seed
+      hashes.push(hash);
+    }
+    return hashes;
+  }
+
+  add(item) {
+    const hashes = this.hashFunctions(item);
+    for (const hash of hashes) {
+      this.bitArray[hash] = true;
+    }
+  }
+
+  contains(item) {
+    const hashes = this.hashFunctions(item);
+    for (const hash of hashes) {
+      if (!this.bitArray[hash]) {
+        return false; // Definitely not in the filter
+      }
+    }
+    return true; // Possibly in the filter (false positive)
+  }
+}
+
+// Example
+const filter = new BloomFilter(100, 3);
+filter.add("apple");
+filter.add("banana");
+console.log(filter.contains("apple"));  // true (possibly)
+console.log(filter.contains("orange")); // false (definitely)
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
