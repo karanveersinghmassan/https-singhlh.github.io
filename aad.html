@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Analysis and Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        /* Custom styles for code blocks and pre tags */
+        pre {
+            background-color: #1f2937; /* Darker background for code blocks */
+            color: #f8fafc; /* Lighter text color */
+            padding: 16px;
+            border-radius: 0.375rem; /* Rounded corners */
+            overflow-x: auto; /* Enable horizontal scrolling for long code lines */
+            margin-bottom: 1rem; /* Add some margin below the code block */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* Monospace font */
+            font-size: 0.875rem; /* Smaller font size for code */
+            line-height: 1.5rem; /* Increased line height for better readability */
+        }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* Monospace font */
+            font-size: 0.875rem; /* Smaller font size for inline code */
+            color: #f8fafc; /* Lighter text color */
+            background-color: #374151;  /* Slightly darker background for inline code */
+            padding: 0.25rem 0.5rem; /* Padding for inline code */
+            border-radius: 0.375rem; /* Rounded corners for inline code */
+        }
+
+        .heading-link {
+            color: #6b7280; /* Gray color for the link */
+            margin-left: 0.5rem; /* Add some space between heading and link */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .heading-link:hover {
+            color: #374151; /* Darker gray on hover */
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <header class="bg-indigo-600 text-white py-4">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-semibold">Algorithm Analysis and Design</h1>
+        </div>
+    </header>
+
+    <nav class="bg-indigo-100 py-3">
+        <div class="container mx-auto px-4">
+            <a href="index.html" class="text-indigo-600 hover:text-indigo-800 font-semibold">Home</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8 px-4">
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Module 1: Basic Concepts of Algorithms</h2>
+            <div class="space-y-6">
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Notion of Algorithm</h3>
+                    <p class="text-gray-600">
+                        An algorithm is a finite sequence of well-defined, computer-implementable instructions, typically to solve a class of specific problems or to perform a computation.  Algorithms are essential for processing data by computers.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Fundamentals of Algorithmic Solving</h3>
+                    <p class="text-gray-600">
+                        Algorithmic problem solving involves understanding the problem, devising a plan, carrying out the plan, and looking back to evaluate the solution. Key aspects include defining inputs, outputs, and the sequence of steps.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Important Problem Types</h3>
+                    <p class="text-gray-600">
+                        Common problem types in algorithm analysis include sorting (e.g., arranging items in order), searching (e.g., finding a specific item), string processing (e.g., pattern matching), graph problems (e.g., finding shortest paths), and combinatorial problems (e.g., finding optimal combinations).
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Fundamentals of the Analysis Framework</h3>
+                    <p class="text-gray-600">
+                       The analysis framework for algorithms involves evaluating an algorithm's efficiency in terms of time and space complexity.  This analysis helps in comparing algorithms and choosing the best one for a particular task.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Asymptotic Notations and Basic Efficiency Classes</h3>
+                    <p class="text-gray-600">
+                        Asymptotic notations (Big O, Big Omega, Big Theta) are used to describe the limiting behavior of an algorithm's complexity as the input size increases. Common efficiency classes include constant (O(1)), logarithmic (O(log n)), linear (O(n)), linearithmic (O(n log n)), quadratic (O(n^2)), and exponential (O(2^n)).
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Mathematical Analysis of Non-Recursive Algorithms</h3>
+                    <p class="text-gray-600">
+                        Non-recursive algorithms are analyzed by determining the number of operations they perform as a function of the input size. This often involves summing up the costs of individual operations within loops and other control structures.
+                    </p>
+                    <pre><code>
+function sumArray(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i]; // This line executes n times, where n is the size of arr
+  }
+  return sum;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Mathematical Analysis of Recursive Algorithms</h3>
+                    <p class="text-gray-600">
+                        Recursive algorithms are analyzed by setting up recurrence relations, which describe the algorithm's time complexity in terms of the input size.  The substitution method is one technique for solving these relations.
+                    </p>
+                    <pre><code>
+function factorial(n) {
+  if (n === 0) {
+    return 1; // Base case: O(1)
+  } else {
+    return n * factorial(n - 1); // Recursive call
+  }
+}
+                    </code></pre>
+                </article>
+                 <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Recurrence Relations</h3>
+                    <p class="text-gray-600">
+                        A recurrence relation is an equation that defines a sequence recursively: each term of the sequence is defined as a function of the preceding terms. Recurrence relations for algorithms describe their time complexity.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Solution of Recurrence Relations Using Substitution Method</h3>
+                    <p class="text-gray-600">
+                        The substitution method involves guessing a solution and then using mathematical induction to prove that the guess is correct.  It's useful for finding closed-form expressions for the time complexity of recursive algorithms.
+                    </p>
+                     <pre><code>
+T(n) = 2T(n/2) + n  // Example recurrence relation
+
+// Guess: T(n) = O(n log n)
+// Use induction to prove the guess
+                    </code></pre>
+                </article>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Module 2: Brute Force, Divide and Conquer Strategy</h2>
+             <div class="space-y-6">
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Selection Sort</h3>
+                    <p class="text-gray-600">
+                        Selection sort is a simple sorting algorithm that repeatedly finds the minimum element from the unsorted part of the list and places it at the beginning.  It has a time complexity of O(n^2).
+                    </p>
+                     <pre><code>
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]; // Swap elements
+    }
+  }
+  return arr;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Bubble Sort</h3>
+                    <p class="text-gray-600">
+                        Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.  It has a time complexity of O(n^2).
+                    </p>
+                    <pre><code>
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Swap elements
+      }
+    }
+  }
+  return arr;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Sequential Searching (Linear Search)</h3>
+                    <p class="text-gray-600">
+                        Linear search is a method for finding an element within a list. It sequentially checks each element of the list until a match is found or the whole list has been searched.  It has a time complexity of O(n).
+                    </p>
+                     <pre><code>
+function linearSearch(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i; // Return the index if found
+    }
+  }
+  return -1; // Return -1 if not found
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Brute Force String Matching</h3>
+                    <p class="text-gray-600">
+                        Brute force string matching involves checking all possible positions of a pattern within a text.  It has a time complexity of O(m*n), where n is the text length and m is the pattern length.
+                    </p>
+                    <pre><code>
+function bruteForceStringMatch(text, pattern) {
+  for (let i = 0; i <= text.length - pattern.length; i++) {
+    let j;
+    for (j = 0; j < pattern.length; j++) {
+      if (text[i + j] !== pattern[j]) {
+        break;
+      }
+    }
+    if (j === pattern.length) {
+      return i; // Return the starting index of the match
+    }
+  }
+  return -1; // Return -1 if no match is found
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">General Method of Divide and Conquer</h3>
+                    <p class="text-gray-600">
+                        Divide and conquer is an algorithmic paradigm that involves recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to solve directly. The solutions to the sub-problems are then combined to give a solution to the original problem.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Merge Sort</h3>
+                    <p class="text-gray-600">
+                        Merge sort is an efficient, general-purpose, comparison-based sorting algorithm. It is a divide-and-conquer algorithm.  It has a time complexity of O(n log n).
+                    </p>
+                    <pre><code>
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++;
+    }
+  }
+  return result.concat(left.slice(i)).concat(right.slice(j));
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Quick Sort</h3>
+                    <p class="text-gray-600">
+                        Quicksort is a highly efficient sorting algorithm and is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.  It has an average time complexity of O(n log n), but a worst-case time complexity of O(n^2).
+                    </p>
+                    <pre><code>
+function quickSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const pivot = arr[0];
+  const left = [];
+  const right = [];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quickSort(left).concat([pivot]).concat(quickSort(right));
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Binary Search</h3>
+                    <p class="text-gray-600">
+                        Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one.  It has a time complexity of O(log n).
+                    </p>
+                    <pre><code>
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Strassen’s Matrix Multiplication</h3>
+                    <p class="text-gray-600">
+                        Strassen's algorithm is an algorithm for matrix multiplication. It is faster than the standard matrix multiplication algorithm for large matrices, with a time complexity of O(n^log2(7)) ≈ O(n^2.807).  It is a divide-and-conquer algorithm.
+                    </p>
+                    <pre><code>
+function strassen(A, B) {
+  const n = A.length;
+  if (n <= 1) {
+    return [[A[0][0] * B[0][0]]];
+  }
+  const k = Math.floor(n / 2);
+  const a11 = A.slice(0, k).map(row => row.slice(0, k));
+  const a12 = A.slice(0, k).map(row => row.slice(k, n));
+  const a21 = A.slice(k, n).map(row => row.slice(0, k));
+  const a22 = A.slice(k, n).map(row => row.slice(k, n));
+  const b11 = B.slice(0, k).map(row => row.slice(0, k));
+  const b12 = B.slice(0, k).map(row => row.slice(k, n));
+  const b21 = B.slice(k, n).map(row => row.slice(0, k));
+  const b22 = B.slice(k, n).map(row => row.slice(k, n));
+
+  const p1 = strassen(add(a11, a22), add(b11, b22));
+  const p2 = strassen(add(a21, a22), b11);
+  const p3 = strassen(a11, sub(b12, b22));
+  const p4 = strassen(a22, sub(b21, b11));
+  const p5 = strassen(add(a11, a12), b22);
+  const p6 = strassen(sub(a21, a11), add(b11, b12));
+  const p7 = strassen(sub(a12, a22), add(b21, b22));
+
+  const c11 = add(sub(add(p1, p4), p5), p7);
+  const c12 = add(p3, p5);
+  const c21 = add(p2, p4);
+  const c22 = add(sub(add(p1, p3), p2), p6);
+
+  return combine(c11, c12, c21, c22);
+}
+
+function add(A, B) {
+  return A.map((row, i) => row.map((val, j) => val + B[i][j]));
+}
+
+function sub(A, B) {
+  return A.map((row, i) => row.map((val, j) => val - B[i][j]));
+}
+
+function combine(c11, c12, c21, c22) {
+  const k = c11.length;
+  const n = k * 2;
+  const C = Array(n).fill(null).map(() => Array(n).fill(null));
+  for (let i = 0; i < k; i++) {
+    for (let j = 0; j < k; j++) {
+      C[i][j] = c11[i][j];
+      C[i][j + k] = c12[i][j];
+      C[i + k][j] = c21[i][j];
+      C[i + k][j + k] = c22[i][j];
+    }
+  }
+  return C;
+}
+                    </code></pre>
+                </article>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Module 3: Greedy Approach and Dynamic Programming</h2>
+            <div class="space-y-6">
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Fractional Knapsack Problem</h3>
+                    <p class="text-gray-600">
+                        The fractional knapsack problem involves selecting items with maximum total value to fit into a knapsack with a limited capacity, where you can take fractions of items.  The greedy approach sorts items by their value-to-weight ratio and selects them in descending order.
+                    </p>
+                    <pre><code>
+function fractionalKnapsack(capacity, values, weights) {
+  const n = values.length;
+  const items = [];
+  for (let i = 0; i < n; i++) {
+    items.push({ value: values[i], weight: weights[i], ratio: values[i] / weights[i] });
+  }
+  items.sort((a, b) => b.ratio - a.ratio); // Sort by descending ratio
+  let totalValue = 0;
+  let remainingCapacity = capacity;
+  const selectedItems = [];
+
+  for (let i = 0; i < n; i++) {
+    if (items[i].weight <= remainingCapacity) {
+      totalValue += items[i].value;
+      remainingCapacity -= items[i].weight;
+      selectedItems.push({item: i, fraction: 1});
+    } else {
+      const fraction = remainingCapacity / items[i].weight;
+      totalValue += items[i].value * fraction;
+      remainingCapacity = 0;
+      selectedItems.push({item: i, fraction: fraction});
+      break;
+    }
+  }
+  return { totalValue, selectedItems };
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Minimum Cost Spanning Tree: Prim’s and Kruskal’s Algorithm</h3>
+                    <p class="text-gray-600">
+                        A minimum cost spanning tree (MST) is a subset of the edges of a connected, edge-weighted undirected graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight.  Prim's and Kruskal's algorithms are greedy algorithms for finding an MST.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>Prim’s Algorithm:</strong> Starts with an arbitrary node and iteratively adds the minimum-weight edge connecting a node in the tree to a node not in the tree.
+                    </p>
+                     <pre><code>
+function primMST(graph) {
+  const numVertices = graph.length;
+  const parent = Array(numVertices).fill(-1);
+  const key = Array(numVertices).fill(Infinity);
+  const mstSet = Array(numVertices).fill(false);
+
+  key[0] = 0; // Start with the first vertex
+  parent[0] = -1;
+
+  for (let count = 0; count < numVertices - 1; count++) {
+    let minKey = Infinity, minIndex = -1;
+    for (let v = 0; v < numVertices; v++) {
+      if (mstSet[v] === false && key[v] < minKey) {
+        minKey = key[v];
+        minIndex = v;
+      }
+    }
+
+    const u = minIndex;
+    mstSet[u] = true;
+
+    for (let v = 0; v < numVertices; v++) {
+      if (graph[u][v] && mstSet[v] === false && graph[u][v] < key[v]) {
+        parent[v] = u;
+        key[v] = graph[u][v];
+      }
+    }
+  }
+  return parent;
+}
+                    </code></pre>
+                    <p class="text-gray-600">
+                        <strong>Kruskal’s Algorithm:</strong> Sorts all the edges in non-decreasing order of their weight.  The algorithm picks the smallest edge. It includes this edge in the MST if it doesn’t form a cycle.
+                    </p>
+                    <pre><code>
+function kruskalMST(graph) {
+  const numVertices = graph.length;
+  const edges = [];
+  for (let i = 0; i < numVertices; i++) {
+    for (let j = i + 1; j < numVertices; j++) {
+      if (graph[i][j] !== 0) { // 0 represents no edge
+        edges.push({ source: i, destination: j, weight: graph[i][j] });
+      }
+    }
+  }
+  edges.sort((a, b) => a.weight - b.weight); // Sort edges by weight
+
+  const parent = Array(numVertices).fill(-1);
+  const find = (i) => (parent[i] === -1 ? i : (parent[i] = find(parent[i])));
+  const union = (i, j) => {
+    const rootI = find(i), rootJ = find(j);
+    if (rootI !== rootJ) parent[rootI] = rootJ;
+  };
+
+  const mst = [];
+  for (let i = 0; i < edges.length; i++) {
+    const edge = edges[i];
+    const rootSource = find(edge.source);
+    const rootDestination = find(edge.destination);
+    if (rootSource !== rootDestination) {
+      mst.push(edge);
+      union(rootSource, rootDestination);
+    }
+  }
+  return mst;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Single Source Shortest Path Problem</h3>
+                    <p class="text-gray-600">
+                        The single-source shortest path problem involves finding the shortest paths from a source vertex to all other vertices in a graph.  Dijkstra's algorithm is a greedy algorithm that solves this problem for graphs with non-negative edge weights.
+                    </p>
+                    <pre><code>
+function dijkstra(graph, source) {
+  const numVertices = graph.length;
+  const dist = Array(numVertices).fill(Infinity);
+  const visited = Array(numVertices).fill(false);
+
+  dist[source] = 0;
+
+  for (let count = 0; count < numVertices - 1; count++) {
+    let minDistance = Infinity, minIndex = -1;
+    for (let v = 0; v < numVertices; v++) {
+      if (visited[v] === false && dist[v] < minDistance) {
+        minDistance = dist[v];
+        minIndex = v;
+      }
+    }
+
+    const u = minIndex;
+    visited[u] = true;
+
+    for (let v = 0; v < numVertices; v++) {
+      if (graph[u][v] && !visited[v] && dist[u] !== Infinity &&
+        dist[u] + graph[u][v] < dist[v]) {
+        dist[v] = dist[u] + graph[u][v];
+      }
+    }
+  }
+  return dist;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Principle of Optimality</h3>
+                    <p class="text-gray-600">
+                        The principle of optimality states that an optimal solution to a problem can be constructed from optimal solutions to its subproblems.  Dynamic programming relies on this principle.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Multi-Stage Graph Problem</h3>
+                    <p class="text-gray-600">
+                        The multi-stage graph problem involves finding the shortest path from a source to a sink in a graph with stages.  Dynamic programming can be used to solve this problem efficiently.
+                    </p>
+                    <pre><code>
+function multiStageGraph(graph) {
+  const numVertices = graph.length;
+  const numStages = Math.floor(Math.log2(numVertices)) + 1; // Assuming a binary stage graph
+  const dist = Array(numVertices).fill(Infinity);
+  const path = Array(numVertices).fill(-1);
+
+  dist[0] = 0; // Start at source node 0
+
+  for (let i = 0; i < numStages - 1; i++) {
+    for (let j = 0; j < numVertices; j++) {
+      if (dist[j] !== Infinity) {
+        for (let k = 0; k < numVertices; k++) {
+          if (graph[j][k] !== 0 && dist[k] > dist[j] + graph[j][k]) {
+            dist[k] = dist[j] + graph[j][k];
+            path[k] = j;
+          }
+        }
+      }
+    }
+  }
+
+  let destination = numVertices - 1;
+  const optimalPath = [destination];
+  while (path[destination] !== -1) {
+    destination = path[destination];
+    optimalPath.unshift(destination);
+  }
+
+  return { distance: dist[numVertices - 1], path: optimalPath };
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">All Pair Shortest Path Problem</h3>
+                    <p class="text-gray-600">
+                        The all-pairs shortest path problem involves finding the shortest paths between every pair of vertices in a graph.  Floyd-Warshall algorithm is a dynamic programming algorithm that solves this problem.
+                    </p>
+                    <pre><code>
+function floydWarshall(graph) {
+  const numVertices = graph.length;
+  let dist = graph.map(row => [...row]); // Create a copy of the graph
+
+  for (let k = 0; k < numVertices; k++) {
+    for (let i = 0; i < numVertices; i++) {
+      for (let j = 0; j < numVertices; j++) {
+        if (dist[i][k] !== Infinity && dist[k][j] !== Infinity &&
+            dist[i][k] + dist[k][j] < dist[i][j]) {
+          dist[i][j] = dist[i][k] + dist[k][j];
+        }
+      }
+    }
+  }
+  return dist;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">0/1 Knapsack Problem</h3>
+                    <p class="text-gray-600">
+                        The 0/1 knapsack problem involves selecting items with maximum total value to fit into a knapsack with a limited capacity, where you can either take an item entirely or leave it.  Dynamic programming can be used to find the optimal solution.
+                    </p>
+                    <pre><code>
+function zeroOneKnapsack(capacity, weights, values) {
+  const n = values.length;
+  const dp = Array(n + 1).fill(null).map(() => Array(capacity + 1).fill(0));
+
+  for (let i = 1; i <= n; i++) {
+    for (let w = 0; w <= capacity; w++) {
+      if (weights[i - 1] <= w) {
+        dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+      } else {
+        dp[i][w] = dp[i - 1][w];
+      }
+    }
+  }
+  return dp[n][capacity];
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Traveling Salesperson Problem</h3>
+                    <p class="text-gray-600">
+                        The traveling salesperson problem (TSP) involves finding the shortest possible route that visits each city exactly once and returns to the origin city.  Dynamic programming can be used to solve this problem for smaller instances.
+                    </p>
+                    <pre><code>
+function travelingSalesperson(graph) {
+  const numVertices = graph.length;
+  const allSets = 1 << numVertices;
+  const dp = Array(numVertices).fill(null).map(() => Array(allSets).fill(Infinity));
+  const parent = Array(numVertices).fill(null).map(() => Array(allSets).fill(-1));
+
+  dp[0][1] = 0; // Start at node 0, visited set {0}
+
+  for (let setSize = 2; setSize < numVertices; setSize++) {
+    for (let setMask = 1; setMask < allSets; setMask++) {
+      if (countSetBits(setMask) === setSize) {
+        for (let j = 1; j < numVertices; j++) {
+          if ((setMask & (1 << j)) !== 0) { // Check if j is in the set
+            const prevSet = setMask & ~(1 << j); // Remove j from the set
+            for (let k = 0; k < numVertices; k++) {
+              if ((prevSet & (1 << k)) !== 0) { // Check if k is in the previous set
+                const distance = dp[k][prevSet] + graph[k][j];
+                if (distance < dp[j][setMask]) {
+                  dp[j][setMask] = distance;
+                  parent[j][setMask] = k;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  let finalSet = allSets - 1;
+  let minCost = Infinity;
+  let startNode = 0;
+  for (let j = 1; j < numVertices; j++) {
+    const cost = dp[j][finalSet] + graph[j][0];
+    if (cost < minCost) {
+      minCost = cost;
+      startNode = j;
+    }
+  }
+
+  const path = [0];
+  let currentSet = finalSet;
+  let currentNode = startNode;
+  while (currentNode !== 0) {
+    path.unshift(currentNode);
+    const nextNode = parent[currentNode][currentSet];
+    currentSet = currentSet & ~(1 << currentNode);
+    currentNode = nextNode;
+  }
+  path.push(0);
+
+  return { minCost, path };
+}
+
+function countSetBits(n) {
+  let count = 0;
+  while (n > 0) {
+    n &= (n - 1);
+    count++;
+  }
+  return count;
+}
+                    </code></pre>
+                </article>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Module 4: Backtracking and Branch and Bound</h2>
+            <div class="space-y-6">
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">General Method of Backtracking</h3>
+                    <p class="text-gray-600">
+                        Backtracking is an algorithmic technique for solving problems recursively by trying to build a solution incrementally, removing those solutions that fail to satisfy the constraints of the problem at any point of time.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">N-Queen Problem</h3>
+                    <p class="text-gray-600">
+                        The N-Queens problem is the problem of placing N chess queens on an N×N chessboard so that no two queens threaten each other.  Backtracking can be used to find all possible solutions.
+                    </p>
+                    <pre><code>
+function solveNQueens(n) {
+  const board = Array(n).fill(null).map(() => Array(n).fill(0));
+  const solutions = [];
+
+  function isSafe(row, col) {
+    for (let i = 0; i < col; i++) {
+      if (board[row][i] === 1) {
+        return false;
+      }
+    }
+    for (let i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+      if (board[i][j] === 1) {
+        return false;
+      }
+    }
+    for (let i = row, j = col; j >= 0 && i < n; i++, j--) {
+      if (board[i][j] === 1) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function solveNQUtil(col) {
+    if (col === n) {
+      const solution = board.map(row => row.slice());
+      solutions.push(solution);
+      return true; //return true to find all solutions
+    }
+
+    let res = false;
+    for (let i = 0; i < n; i++) {
+      if (isSafe(i, col)) {
+        board[i][col] = 1;
+        res = solveNQUtil(col + 1) || res; // Use || to find all solutions
+        board[i][col] = 0; // Backtrack
+      }
+    }
+    return res;
+  }
+
+  solveNQUtil(0);
+  return solutions;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">0/1 Knapsack Problem</h3>
+                    <p class="text-gray-600">
+                       The 0/1 Knapsack problem can also be solved using backtracking.  This involves exploring all possible combinations of items to include in the knapsack.
+                    </p>
+                    <pre><code>
+function zeroOneKnapsackBacktracking(capacity, weights, values) {
+  const n = values.length;
+  let maxVal = 0;
+
+  function knapsackUtil(currentCapacity, currentValue, index) {
+    if (index === n) {
+      maxVal = Math.max(maxVal, currentValue);
+      return;
+    }
+    if (weights[index] <= currentCapacity) {
+      knapsackUtil(currentCapacity - weights[index], currentValue + values[index], index + 1); // Include item
+    }
+    knapsackUtil(currentCapacity, currentValue, index + 1); // Exclude item
+  }
+
+  knapsackUtil(capacity, 0, 0);
+  return maxVal;
+}
+                    </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">General Method of Branch & Bound</h3>
+                    <p class="text-gray-600">
+                        Branch and bound is an algorithm design paradigm for discrete and combinatorial optimization problems, as well as mathematical optimization.  It systematically enumerates all candidate solutions, discarding large subsets of fruitless candidates, by using upper and lower estimated bounds of the quantity being optimized.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">0/1 Knapsack Problem</h3>
+                     <p class="text-gray-600">
+                        Branch and bound can be used to solve the 0/1 Knapsack problem more efficiently than backtracking by pruning branches that cannot lead to an optimal solution.
+                     </p>
+                     <pre><code>
+function zeroOneKnapsackBranchAndBound(capacity, weights, values) {
+  const n = values.length;
+  const items = [];
+  for (let i = 0; i < n; i++) {
+    items.push({ weight: weights[i], value: values[i], ratio: values[i] / weights[i] });
+  }
+  items.sort((a, b) => b.ratio - a.ratio);
+
+  let maxVal = 0;
+
+  function bound(currentCapacity, currentIndex, currentValue) {
+    let remainingCapacity = currentCapacity;
+    let currentBound = currentValue;
+    for (let i = currentIndex; i < n; i++) {
+      if (items[i].weight <= remainingCapacity) {
+        currentBound += items[i].value;
+        remainingCapacity -= items[i].weight;
+      } else {
+        currentBound += items[i].value * (remainingCapacity / items[i].weight);
+        break;
+      }
+    }
+    return currentBound;
+  }
+
+  function knapsackUtil(currentCapacity, currentValue, index) {
+    if (index === n) {
+      maxVal = Math.max(maxVal, currentValue);
+      return;
+    }
+    if (bound(currentCapacity, index, currentValue) > maxVal) { // Use bound
+      if (items[index].weight <= currentCapacity) {
+        knapsackUtil(currentCapacity - items[index].weight, currentValue + items[index].value, index + 1);
+      }
+      knapsackUtil(currentCapacity, currentValue, index + 1);
+    }
+  }
+
+  knapsackUtil(capacity, 0, 0);
+  return maxVal;
+}
+                     </code></pre>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Traveling Salesperson Problem</h3>
+                    <p class="text-gray-600">
+                        Branch and bound can also be applied to the traveling salesperson problem.  It involves systematically generating possible routes, calculating the cost of each, and pruning routes that are guaranteed to be more costly than the best solution found so far.
+                    </p>
+                    <pre><code>
+function tspBranchAndBound(graph) {
+  const numVertices = graph.length;
+  const visited = Array(numVertices).fill(false);
+  let minCost = Infinity;
+  let minPath = [];
+
+  function calculateCost(path) {
+    let cost = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+      cost += graph[path[i]][path[i + 1]];
+    }
+    cost += graph[path[path.length - 1]][path[0]]; // Return to start
+    return cost;
+  }
+
+  function tspUtil(currentVertex, path, currentCost, level) {
+    visited[currentVertex] = true;
+    path.push(currentVertex);
+
+    if (level === numVertices - 1) {
+      const cost = calculateCost(path);
+      if (cost < minCost) {
+        minCost = cost;
+        minPath = [...path];
+      }
+    } else {
+      for (let i = 0; i < numVertices; i++) {
+        if (!visited[i] && graph[currentVertex][i] !== 0) {
+          const newCost = currentCost + graph[currentVertex][i];
+          if (newCost < minCost) { // Use currentCost to prune
+            tspUtil(i, path, newCost, level + 1);
+          }
+        }
+      }
+    }
+
+    visited[currentVertex] = false;
+    path.pop();
+  }
+
+  tspUtil(0, [], 0, 0);
+  return { minCost, minPath };
+}
+                    </code></pre>
+                </article>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Module 5: Lower Bound Theory and Complexity Classes</h2>
+            <div class="space-y-6">
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Lower Bounds</h3>
+                    <p class="text-gray-600">
+                        A lower bound is a measure of the minimum amount of resources (time, space) required to solve a computational problem.  It provides a limit on the efficiency of any algorithm that solves that problem.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Decision Trees</h3>
+                    <p class="text-gray-600">
+                        A decision tree is a flowchart-like structure in which each internal node represents a comparison on an input, each branch represents the outcome of the comparison, and each leaf node represents a decision (output). Decision trees can be used to model the execution of comparison-based algorithms, such as sorting algorithms.
+                    </p>
+                </article>
+                <article>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">P, NP and NP Complete Problems</h3>
+                    <p class="text-gray-600">
+                        <strong>P (Polynomial Time):</strong> The class of problems that can be solved by a deterministic algorithm in polynomial time.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>NP (Non-deterministic Polynomial Time):</strong> The class of problems for which a given solution can be verified in polynomial time.
+                    </p>
+                    <p class="text-gray-600">
+                        <strong>NP-Complete:</strong> The class of problems in NP that are at least as hard as any other problem in NP. If a polynomial-time algorithm exists for an NP-complete problem, then polynomial-time algorithms exist for all problems in NP.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-4">
+        <div class="container mx-auto px-4 text-center">
+            &copy; 2023 Algorithm Analysis and Design
+        </div>
+    </footer>
+
+    <script>
+    // You can add any JavaScript functionality here if needed.
+    </script>
+</body>
+</html>
