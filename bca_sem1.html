@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Semester 1 </title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3f2fd; /* Light blue-grey */
+            color: #37474f; /* Dark grey */
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 60px auto;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            color: #1e88e5; /* Blue accent */
+            text-align: center;
+            margin-bottom: 45px;
+            font-size: 3.0em;
+            font-weight: 500;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .navigation a {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4caf50; /* Green accent */
+            background-color: #f1f8e9; /* Light green */
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
+            border: 1px solid #c8e6c9;
+        }
+
+        .navigation a:hover {
+            background-color: #4caf50;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .subjects-wrapper {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            width: calc(33% - 30px); /* Adjust width for spacing */
+            min-width: 280px;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-card a {
+            display: block;
+            text-decoration: none;
+            color: #546e7a; /* Blue-grey */
+            padding: 30px;
+            text-align: center;
+        }
+
+        .subject-card h3 {
+            color: #1e88e5; /* Blue accent */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 30px;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2.6em;
+                margin-bottom: 35px;
+            }
+
+            .navigation a {
+                display: block;
+                margin: 10px 0;
+                padding: 12px 25px;
+            }
+
+            .subjects-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .subject-card {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .subject-card a {
+                padding: 25px;
+            }
+
+            .subject-card h3 {
+                font-size: 1.4em;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Subtle border animation */
+        .subject-card a {
+            position: relative;
+        }
+
+        .subject-card a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1e88e5;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .subject-card a:hover::before {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BCA Semester 1</h1>
+
+        <div class="navigation">
+            <a href="index.html">Home Page</a>
+        </div>
+
+        <div class="subjects-wrapper">
+            <div class="subject-card">
+                <a href="it_fundamentals.html">
+                    <h3>IT Fundamentals</h3>
+                    <p>IT basic principles, essential rules, or core aspects that underlie a subject, skill, or system.</p>
+                </a>
+            </div>
+            <div class="subject-card">
+                <a href="c_programming.html">
+                    <h3>C Programming</h3>
+                    <p>C is a powerful, general-purpose programming language known for its efficiency, low-level memory manipulation, and foundational role in system development..</p>
+                </a>
+            </div>
+            
+        </div>
+
+        <p style="text-align: center; font-size: 0.9em; color: #777;">&copy; 2025 Singh</p>
+    </div>
+
+    <script>
+        // Basic JavaScript for a subtle background color change on subject card hover
+        const subjectCards = document.querySelectorAll('.subject-card');
+
+        subjectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f5f5f5';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#fff';
+            });
+        });
+
+        // You can add more advanced JavaScript features here if needed.
+    </script>
+</body>
+</html>
